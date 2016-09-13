@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{message.title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body bgcolor="yellow">
+<p align="center"><a href="/?lang=bg">Bulgarian</a> | <a href="/?lang=en">English</a></p>
+<h2 th:text="#{message.overdue}"></h2>
+<table border="1">
+    <tr>
+        <th>Member ID</th>
+        <th>Book ID</th>
+    </tr>
+    <div th:object="${dataBean}" th:remove="tag">
+        <tr th:each="loan : ${dataBean.getOverdueList()}">
+            <td th:text="${loan.getMemberId()}">Member ID</td>
+            <td th:text="${loan.getBookId()}">Member Name</td>
+        </tr>
+    </div>
+</table>
+<p></p>
+<table border="1">
+    <tr>
+        <td><a th:text="#{message.home}" href="/home"></a></td>
+        <td><a th:text="#{message.books}" href="/books"></a></td>
+        <td><a th:text="#{message.searchBook}" href="/books/search"></a></td>
+        <td><a th:text="#{message.member}" href="/members"></a></td>
+        <td><a th:text="#{message.reportFines}" href="/members/fines"></a></td>
+        <td><a th:text="#{message.loanBook}" href="/loan"></a></td>
+        <td><a th:text="#{message.listLoan}" href="/loans"></a></td>
+        <td><a th:text="#{message.overdue}" href="/loan/overdue"></a></td>
+        <td><a th:text="#{message.payFine}" href="/members/payfine"></a></td>
+    </tr>
+</table>
+</body>
+</html>

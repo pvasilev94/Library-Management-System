@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{message.title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body bgcolor="yellow">
+<p align="center"><a href="/?lang=bg">Bulgarian</a> | <a href="/?lang=en">English</a></p>
+<h1 th:text="#{message.title}"></h1>
+<p></p>
+<h2>Search book</h2>
+<form action="/book/title" th:action="@{/book/title}"
+      th:object="${book}" method="post">
+    <p hidden="">
+        <input type="text" th:field="*{bookId}" />
+    </p>
+    <p>
+        Title: <input type="text" th:field="*{title}" size="40" />
+    </p>
+    <p>
+        <input type="submit" value="Submit" />
+    </p>
+</form>
+<table border="1">
+    <tr>
+        <td><a th:text="#{message.books}" href="/books"></a></td>
+        <td><a th:text="#{message.searchBook}" href="/books/search"></a></td>
+        <td><a th:text="#{message.member}" href="/members"></a></td>
+        <td><a th:text="#{message.searchMember}" href="/members/search"></a></td>
+        <td><a th:text="#{message.reportFines}" href="/members/fines"></a></td>
+        <td><a th:text="#{message.overdue}" href="/loan/overdue"></a></td>
+        <td><a th:text="#{message.overdue}" href="/members/payfine"></a></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{message.title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body bgcolor="yellow">
+<p align="center"><a href="/?lang=bg">Bulgarian</a> | <a href="/?lang=en">English</a></p>
+<h2 th:text="#{message.title}"></h2>
+<table border="1">
+    <tr>
+        <th>BookId</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Edition</th>
+        <th>ISBN</th>
+        <th>Publisher</th>
+        <th>Release</th>
+        <th>Availability</th>
+    </tr>
+    <div th:object="${dataBean}" th:remove="tag">
+    <tr th:each="book : ${dataBean.getBookList()}">
+        <td th:text="${book.getBookId()}">Book ID</td>
+        <td th:text="${book.getTitle()}">Title</td>
+        <td th:text="${book.getAuthor()}">Author</td>
+        <td th:text="${book.getEdition()}">Edition</td>
+        <td th:text="${book.getISBN()}">ISBN</td>
+        <td th:text="${book.getPublisher()}">Publisher</td>
+        <td th:text="${book.getYearRelease()}">Release</td>
+        <td th:text="${book.getStatus()}">Availability</td>
+    </tr>
+        </div>
+</table>
+<p></p>
+<table border="1">
+    <tr>        <td><a th:text="#{message.home}" href="/home"></a></td>
+        <td><a th:text="#{message.books}" href="/books"></a></td>
+        <td><a th:text="#{message.searchBook}" href="/books/search"></a></td>
+        <td><a th:text="#{message.member}" href="/members"></a></td>
+        <td><a th:text="#{message.reportFines}" href="/members/fines"></a></td>
+        <td><a th:text="#{message.loanBook}" href="/loan"></a></td>
+        <td><a th:text="#{message.listLoan}" href="/loans"></a></td>
+        <td><a th:text="#{message.overdue}" href="/loan/overdue"></a></td>
+        <td><a th:text="#{message.payFine}" href="/members/payfine"></a></td>
+    </tr>
+</table>
+</body>
+</html>
